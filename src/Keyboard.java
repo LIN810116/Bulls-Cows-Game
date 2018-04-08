@@ -1,19 +1,3 @@
-package ictgradschool.industry;/*
- * CompSci 101 - Keyboard Class
- * ============================
- * Version 4th March, 2011
- *
- * This class is used for input from the keyboard.
- * YOU DO NOT NEED TO UNDERSTAND THE DETAILS OF THIS CLASS.
- * To use this class, put it in the same directory as the source file for your program.
- *
- * Example usage:
- *
- * String input = Keyboard.readInput();
- *
- * This will assign the line of text entered at the keyboard (as a String) to the input variable.
- *
- */
 import java.util.*;
 import java.io.*;
 
