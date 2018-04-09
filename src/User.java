@@ -10,18 +10,21 @@ public class User extends Players {
     public User() {
         this.setName("You");
     }
-    public void setCode(List<Integer> target){
+    public void setCode(int[] target){
+        String input;
         while (true) {
-            target.clear();
-            if (this.checkInput(Keyboard.readInput(), target)) {
+            input = Keyboard.readInput();
+            if (this.checkInput(input, target)) {
                 break;
             }
+        }
+        for(int i = 0; i < LENGTH_OF_CODE; i++){
+            target[i] = Integer.parseInt(input.charAt(i) + "");
         }
     }
 
     @Override
     public void guess() {
-        //todo
         this.setCode(this.guess);
 
     }

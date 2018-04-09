@@ -43,32 +43,10 @@ public class BullsAndCowsGame {
         // generate user's secret code
         System.out.println("Please enter your secret code: ");
         user.setSecretCode();
-        System.out.println("Your secret code: " + user.getSecretCode());
+        System.out.println("Your secret code: " + user.toStringForCode(user.secretCode));
 
         // play the game
         game.play(user, computer);
-
-
-
-
-
-
-        // 1. computer generate secretCode
-        // 2. choose level
-        // 3. choose mode (play or read text)
-        // ---playing---
-        // 4. user sets secret code
-
-        // 5. user guesses
-        // 6. print result
-        // 7. if correct, set winner & break the loop
-        // 8. computer guess
-        // 9. print result
-        // 10. if correct, set winner  & break the loop
-
-        // 11. print winner
-        // --from text file---
-
 
     }
 }

@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Game {
     private int level;
     private int numberOfTurns = 7; //up to 7 times for each player
@@ -12,7 +10,7 @@ public class Game {
     }
 
     public void play(User user, Computer computer) {
-        System.out.println(computer.secretCode);
+        System.out.println(computer.toStringForCode(computer.secretCode));
         //todo
         for (int i = 1; i <= this.getNumberOfTurns(); i++){
             if (this.winner != null){
@@ -38,25 +36,39 @@ public class Game {
         //todo
         this.bulls = 0;
         this.cows = 0;
-        for (int i = 0; i < player.lengthOfCode; i++){
-            //check the number of bulls
-            if (player.guess.get(i) == answer.secretCode.get(i)){
+        // check bulls
+        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
+            if (player.guess[i] == answer.secretCode[i]){
                 this.bulls++;
             }
-            //check the number of cows
-            else {
-                if (answer.secretCode.contains(player.guess.get(i))){
+        }
+        // check cows
+        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
+            for (int j = 0; j < answer.LENGTH_OF_CODE; j++){
+                if (i != j && player.guess[i] == answer.secretCode[j]){
                     this.cows++;
                 }
             }
         }
+//        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
+//            //check the number of bulls
+//            if (player.guess.get(i) == answer.secretCode.get(i)){
+//                this.bulls++;
+//            }
+//            //check the number of cows
+//            else {
+//                if (answer.secretCode.contains(player.guess.get(i))){
+//                    this.cows++;
+//                }
+//            }
+//        }
     }
 
     public void printResult(Players player){
-        System.out.println(player.getName() + " guessed " + player.guess + ", scoring " + this.bulls + " bulls and " + this.cows + " cows.");
+        System.out.println(player.getName() + " guessed " + player.toStringForCode(player.guess) + ", scoring " + this.bulls + " bulls and " + this.cows + " cows.");
     }
     public void printWinner(Players player, int count){
-        if (this.bulls == player.lengthOfCode){
+        if (this.bulls == player.LENGTH_OF_CODE){
             System.out.println(player.getName() + " win! :)");
             this.winner = player.getName();
             return;
@@ -95,6 +107,7 @@ public class Game {
                     isValid = true;
                     break;
                 default:
+                    System.out.println("Invalid input, try again!");
                     break;
             }
         }

@@ -4,23 +4,38 @@ import java.util.*;
 public abstract class Players {
     //ToDo Attributes
     private String name;
-    static final int lengthOfCode = 4;
-    protected List<Integer> secretCode = new ArrayList<Integer>();
-    protected List<Integer> guess = new ArrayList<Integer>();
+    static final int LENGTH_OF_CODE = 4;
+//    protected List<Integer> secretCode = new ArrayList<Integer>();
+//    protected List<Integer> guess = new ArrayList<Integer>();
+    protected int[] secretCode = new int[LENGTH_OF_CODE];
+    protected int[] guess = new int[LENGTH_OF_CODE];
 
     //Todo Methods
-    public boolean checkInput(String input, List<Integer> target){
+    public boolean checkInput(String input, int[] target){
         try{
-            if (input.length() > lengthOfCode || input.length() < lengthOfCode){
+            if (input.length() > LENGTH_OF_CODE || input.length() < LENGTH_OF_CODE){
                 throw new IndexOutOfBoundsException();
             }
-            for (int i = 0; i < lengthOfCode; i++){
-                int value = Integer.parseInt(input.charAt(i) + "");
-                if (target.contains(value)){ //must be 4 different digits
-                    throw new DuplicateDataException();
-                }
-                target.add(value);
+
+            for(int i = 0; i < input.length(); i ++){
+                target[i] = Integer.parseInt(input.charAt(i) + "");
             }
+            for(int i = 0; i < target.length; i++){
+                for(int j = 0; j < target.length; j++){
+                    if(i != j && target[i] == target[j]){
+                        throw new DuplicateDataException();
+                    }
+                }
+            }
+
+//            for (int i = 0; i < LENGTH_OF_CODE; i++){
+//                int value = Integer.parseInt(input.charAt(i) + "");
+//                if (target.contains(value)){ //must be 4 different digits
+//                    throw new DuplicateDataException();
+//                }
+//                target.add(value);
+//            }
+
         }
         catch (IndexOutOfBoundsException e){
             System.out.println("The length of the input was invalid, try again:");
@@ -57,7 +72,7 @@ public abstract class Players {
     public abstract void setSecretCode();
     //will be implemented in user and computer classes >> different implementations
 
-    public List<Integer> getSecretCode(){
+    public int[] getSecretCode(){
         return this.secretCode;
     }
 
@@ -65,8 +80,16 @@ public abstract class Players {
     public void setGuess(List<Integer> input){
         this.guess = guess;
     }
-    public List<Integer> getGuess() {
+    public int[] getGuess() {
         return this.guess;
+    }
+
+    public String toStringForCode(int[] code){
+        String s = "";
+        for (int i = 0; i < LENGTH_OF_CODE; i++){
+            s = s + code[i];
+        }
+        return s;
     }
 
 }
