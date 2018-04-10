@@ -2,7 +2,6 @@ public class Game {
     private int level;
     private int numberOfTurns = 7; //up to 7 times for each player
     private String winner = null;
-    private int bulls, cows;
 
 
     public Game() {
@@ -18,57 +17,57 @@ public class Game {
             }
             //user guess first
             System.out.println(i + ": Please enter your guess: ");
-            user.guess();
-            this.checkAnswer(user, computer);
+            user.guess(user, computer);
+//            this.checkAnswer(user, computer);
             this.printResult(user);
             this.printWinner(user, i);
             //computer's turn
             if (this.winner == null) {
-                computer.guess();
-                this.checkAnswer(computer, user);
+                computer.guess(computer, user);
+//                this.checkAnswer(computer, user);
                 this.printResult(computer);
                 this.printWinner(computer, i);
             }
         }
     }
 
-    public void checkAnswer(Players player, Players answer){
-        //todo
-        this.bulls = 0;
-        this.cows = 0;
-        // check bulls
-        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
-            if (player.guess[i] == answer.secretCode[i]){
-                this.bulls++;
-            }
-        }
-        // check cows
-        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
-            for (int j = 0; j < answer.LENGTH_OF_CODE; j++){
-                if (i != j && player.guess[i] == answer.secretCode[j]){
-                    this.cows++;
-                }
-            }
-        }
+//    public void checkAnswer(Players player, Players answer){
+//        this.bulls = 0;
+//        this.cows = 0;
+//
+//        // check bulls
 //        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
-//            //check the number of bulls
-//            if (player.guess.get(i) == answer.secretCode.get(i)){
+//            if (player.guess[i] == answer.secretCode[i]){
 //                this.bulls++;
 //            }
-//            //check the number of cows
-//            else {
-//                if (answer.secretCode.contains(player.guess.get(i))){
+//        }
+//        // check cows
+//        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
+//            for (int j = 0; j < answer.LENGTH_OF_CODE; j++){
+//                if (i != j && player.guess[i] == answer.secretCode[j]){
 //                    this.cows++;
 //                }
 //            }
 //        }
-    }
+////        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
+////            //check the number of bulls
+////            if (player.guess.get(i) == answer.secretCode.get(i)){
+////                this.bulls++;
+////            }
+////            //check the number of cows
+////            else {
+////                if (answer.secretCode.contains(player.guess.get(i))){
+////                    this.cows++;
+////                }
+////            }
+////        }
+//    }
 
     public void printResult(Players player){
-        System.out.println(player.getName() + " guessed " + player.toStringForCode(player.guess) + ", scoring " + this.bulls + " bulls and " + this.cows + " cows.");
+        System.out.println(player.getName() + " guessed " + player.toStringForCode(player.guess) + ", scoring " + player.bulls + " bulls and " + player.cows + " cows.");
     }
     public void printWinner(Players player, int count){
-        if (this.bulls == player.LENGTH_OF_CODE){
+        if (player.bulls == player.LENGTH_OF_CODE){
             System.out.println(player.getName() + " win! :)");
             this.winner = player.getName();
             return;

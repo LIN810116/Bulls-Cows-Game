@@ -9,6 +9,9 @@ public abstract class Players {
 //    protected List<Integer> guess = new ArrayList<Integer>();
     protected int[] secretCode = new int[LENGTH_OF_CODE];
     protected int[] guess = new int[LENGTH_OF_CODE];
+    protected int bulls, cows;
+    protected int[] tempGuess = new int[LENGTH_OF_CODE];
+    protected int tempBulls, tempCows;
 
     //Todo Methods
     public boolean checkInput(String input, int[] target){
@@ -56,8 +59,39 @@ public abstract class Players {
         return true;
     }
 
-    public abstract void guess(); //different roles have different implementations
+    public abstract void guess(Players player, Players answer); //different roles have different implementations
 
+    public void checkAnswer(int[] guess, int[] secretCode){
+        this.tempBulls = 0;
+        this.tempCows = 0;
+
+        // check bulls
+        for (int i = 0; i < LENGTH_OF_CODE; i++){
+            if (guess[i] == secretCode[i]){
+                this.tempBulls++;
+            }
+        }
+        // check cows
+        for (int i = 0; i < LENGTH_OF_CODE; i++){
+            for (int j = 0; j < LENGTH_OF_CODE; j++){
+                if (i != j && guess[i] == secretCode[j]){
+                    this.tempCows++;
+                }
+            }
+        }
+//        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
+//            //check the number of bulls
+//            if (player.guess.get(i) == answer.secretCode.get(i)){
+//                this.bulls++;
+//            }
+//            //check the number of cows
+//            else {
+//                if (answer.secretCode.contains(player.guess.get(i))){
+//                    this.cows++;
+//                }
+//            }
+//        }
+    }
 
     //ToDo Setters & Getters
     // name

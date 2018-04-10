@@ -44,13 +44,27 @@ public class HardLevel extends Computer {
 
 
     @Override
-    public void guess() {
+    public void guess(Players player, Players answer) {
         //selcet one guess from possibleCode
-
+        int randomIndex = (int)(Math.random() * this.possibleCodes.size());
+        for (int i = 0; i < LENGTH_OF_CODE; i++){
+            this.guess[i] = this.possibleCodes.get(randomIndex)[i];
+        }
         //check answer
-
-        // if not 4A, check all other possible with this guess
-        //  if it does not match the same result, delete it from possibleCodes
-
+        this.checkAnswer(player.guess, answer.secretCode);
+        this.bulls = this.tempBulls;
+        this.cows = this.tempCows;
+        // update possibleCodes
+        List<int[]> tempPossibleCodes = new ArrayList<int[]>(); // store the codes which will be removed later
+        for (int i = 0; i < this.possibleCodes.size(); i++){
+            this.checkAnswer(this.possibleCodes.get(i), player.guess); //assume player's guess as the secret code
+            if (this.tempBulls != this.bulls || this.tempCows != this.cows){
+                tempPossibleCodes.add(this.possibleCodes.get(i));
+            }
+        }
+        // remove all codes which don't match the same result.
+        for (int i = 0; i < tempPossibleCodes.size(); i++){
+            this.possibleCodes.remove(tempPossibleCodes.get(i));
+        }
     }
 }

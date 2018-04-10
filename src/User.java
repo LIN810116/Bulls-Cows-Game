@@ -24,8 +24,11 @@ public class User extends Players {
     }
 
     @Override
-    public void guess() {
+    public void guess(Players player, Players answer) {
         this.setCode(this.guess);
+        this.checkAnswer(player.guess, answer.secretCode);
+        this.bulls = this.tempBulls;
+        this.cows = this.tempCows;
 
     }
 
