@@ -24,8 +24,8 @@ public class MediumLevel extends Computer {
 //            tempGuess.clear();
 //            this.guess(); //recursion
 //        }
+
         this.checkAnswer(player.guess, answer.secretCode);
-//        this.bulls = this.tempBulls;
-//        this.cows = this.tempCows;
+
     }
 }

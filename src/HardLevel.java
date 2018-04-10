@@ -7,9 +7,8 @@ public class HardLevel extends Computer {
     List<int[]> possibleCodes = new ArrayList<int[]>();
     int[] tempGuess = new int[LENGTH_OF_CODE];
 
-    // initiallise possibleCodes for 1st round (put all possible codes into possibleCodes)
     public HardLevel() {
-        // initialise possibleCodes
+        // initiallise possibleCodes for 1st round (put all possible codes into possibleCodes)
         String s = "";
         for (int i = 123; i <= 9876; i++) {
             s = Integer.toString(i);
@@ -42,31 +41,27 @@ public class HardLevel extends Computer {
 //        }
     }
 
-
     @Override
     public void guess(Players player, Players answer) {
-        //selcet one guess from possibleCode
+        //select one guess from possibleCode
         int randomIndex = (int)(Math.random() * this.possibleCodes.size());
         for (int i = 0; i < LENGTH_OF_CODE; i++){
             this.guess[i] = this.possibleCodes.get(randomIndex)[i];
         }
         //check answer
         this.checkAnswer(player.guess, answer.secretCode);
-//        this.bulls = this.tempBulls;
-//        this.cows = this.tempCows;
         // update possibleCodes
         List<int[]> tempPossibleCodes = new ArrayList<int[]>(); // store the codes which will be removed later
+        // use tempBulls & tempCows to keep the values of bulls & cows
         int tempBulls = this.bulls;
         int tempCows = this.cows;
         for (int i = 0; i < this.possibleCodes.size(); i++){
             this.checkAnswer(this.possibleCodes.get(i), player.guess); //assume player's guess as the secret code
-//            if (this.tempBulls != this.bulls || this.tempCows != this.cows){
-//                tempPossibleCodes.add(this.possibleCodes.get(i));
-//            }
             if (tempBulls != this.bulls || tempCows != this.cows){
                 tempPossibleCodes.add(this.possibleCodes.get(i));
             }
         }
+        // give the value back to bulls & cows
         this.bulls = tempBulls;
         this.cows = tempCows;
         // remove all codes which don't match the same result.

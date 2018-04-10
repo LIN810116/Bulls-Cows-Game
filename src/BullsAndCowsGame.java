@@ -34,9 +34,6 @@ public class BullsAndCowsGame {
         }
         System.out.println("Level: " + computer.getLevel());
 
-        // generate computer's secret code
-        computer.setSecretCode();
-
         // create the user
         User user = new User();
 
@@ -44,9 +41,31 @@ public class BullsAndCowsGame {
         System.out.println("Please enter your secret code: ");
         user.setSecretCode();
         System.out.println("Your secret code: " + user.toStringForCode(user.secretCode));
+        game.outputData.add("Your secret code: " + user.toStringForCode(user.secretCode));
+
+        // generate computer's secret code
+        computer.setSecretCode();
+        game.outputData.add("computer's secret code: " + computer.toStringForCode(computer.secretCode));
+        game.outputData.add("------------------------------------------------------------------------");
+
+        //select the mode
+        System.out.println("Select the mode to enter your guesses:");
+        game.setMode();
+
+        // read input from a file
+        if (game.getMode() == "AUTOMATICALLY"){
+            game.readFile(user);
+        }
 
         // play the game
         game.play(user, computer);
+
+        //finish the game & save the results
+        System.out.println("Do you wish to save the result?");
+        game.setSaveResult();
+        if (game.getSaveResult()){
+            game.saveFile();
+        }
 
     }
 }

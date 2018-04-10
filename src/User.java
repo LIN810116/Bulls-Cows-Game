@@ -1,20 +1,26 @@
 import MyExceptions.DuplicateDataException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User extends Players {
-    //ToDo Attributes
+    // Attribute
 
-
-    //ToDo Methods
+    // Methods
     public User() {
         this.setName("You");
     }
     public void setCode(int[] target){
         String input;
         while (true) {
-            input = Keyboard.readInput();
-            if (this.checkInput(input, target)) {
+            if (this.codeFromFile.size() > 0){ // auto
+                input = this.codeFromFile.removeFirst();
+            }
+            else { // manu
+                input = Keyboard.readInput();
+
+            }
+            if (this.checkInput(input)) {
                 break;
             }
         }
@@ -27,9 +33,6 @@ public class User extends Players {
     public void guess(Players player, Players answer) {
         this.setCode(this.guess);
         this.checkAnswer(player.guess, answer.secretCode);
-//        this.bulls = this.tempBulls;
-//        this.cows = this.tempCows;
-
     }
 
     @Override
