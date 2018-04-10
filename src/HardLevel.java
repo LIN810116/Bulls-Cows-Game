@@ -52,16 +52,23 @@ public class HardLevel extends Computer {
         }
         //check answer
         this.checkAnswer(player.guess, answer.secretCode);
-        this.bulls = this.tempBulls;
-        this.cows = this.tempCows;
+//        this.bulls = this.tempBulls;
+//        this.cows = this.tempCows;
         // update possibleCodes
         List<int[]> tempPossibleCodes = new ArrayList<int[]>(); // store the codes which will be removed later
+        int tempBulls = this.bulls;
+        int tempCows = this.cows;
         for (int i = 0; i < this.possibleCodes.size(); i++){
             this.checkAnswer(this.possibleCodes.get(i), player.guess); //assume player's guess as the secret code
-            if (this.tempBulls != this.bulls || this.tempCows != this.cows){
+//            if (this.tempBulls != this.bulls || this.tempCows != this.cows){
+//                tempPossibleCodes.add(this.possibleCodes.get(i));
+//            }
+            if (tempBulls != this.bulls || tempCows != this.cows){
                 tempPossibleCodes.add(this.possibleCodes.get(i));
             }
         }
+        this.bulls = tempBulls;
+        this.cows = tempCows;
         // remove all codes which don't match the same result.
         for (int i = 0; i < tempPossibleCodes.size(); i++){
             this.possibleCodes.remove(tempPossibleCodes.get(i));

@@ -27,8 +27,8 @@ public class User extends Players {
     public void guess(Players player, Players answer) {
         this.setCode(this.guess);
         this.checkAnswer(player.guess, answer.secretCode);
-        this.bulls = this.tempBulls;
-        this.cows = this.tempCows;
+//        this.bulls = this.tempBulls;
+//        this.cows = this.tempCows;
 
     }
 

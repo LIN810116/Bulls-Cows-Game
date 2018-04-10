@@ -11,7 +11,7 @@ public abstract class Players {
     protected int[] guess = new int[LENGTH_OF_CODE];
     protected int bulls, cows;
     protected int[] tempGuess = new int[LENGTH_OF_CODE];
-    protected int tempBulls, tempCows;
+//    protected int tempBulls, tempCows;
 
     //Todo Methods
     public boolean checkInput(String input, int[] target){
@@ -62,20 +62,24 @@ public abstract class Players {
     public abstract void guess(Players player, Players answer); //different roles have different implementations
 
     public void checkAnswer(int[] guess, int[] secretCode){
-        this.tempBulls = 0;
-        this.tempCows = 0;
+//        this.tempBulls = 0;
+//        this.tempCows = 0;
+        this.bulls = 0;
+        this.cows = 0;
 
         // check bulls
         for (int i = 0; i < LENGTH_OF_CODE; i++){
             if (guess[i] == secretCode[i]){
-                this.tempBulls++;
+//                this.tempBulls++;
+                this.bulls++;
             }
         }
         // check cows
         for (int i = 0; i < LENGTH_OF_CODE; i++){
             for (int j = 0; j < LENGTH_OF_CODE; j++){
                 if (i != j && guess[i] == secretCode[j]){
-                    this.tempCows++;
+//                    this.tempCows++;
+                    this.cows++;
                 }
             }
         }

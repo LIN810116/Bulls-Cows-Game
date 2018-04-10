@@ -68,7 +68,7 @@ public class Game {
     }
     public void printWinner(Players player, int count){
         if (player.bulls == player.LENGTH_OF_CODE){
-            System.out.println(player.getName() + " win! :)");
+            System.out.println("The winner is " + player.getName() + " :)");
             this.winner = player.getName();
             return;
         }
