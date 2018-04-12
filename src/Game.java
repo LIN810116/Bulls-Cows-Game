@@ -27,8 +27,11 @@ public class Game {
                 break;
             }
             outputData.add("Turn " + Integer.toString(i) + ": ");
+            System.out.println("Turn " + Integer.toString(i) + ": ");
             //user guess first
-            System.out.println(i + ": Please enter your guess: ");
+            if (this.getMode().equals("MANUALLY") || (this.getMode().equals("AUTOMATICALLY") && user.codeFromFile.size() == 0)){
+                System.out.println("Please enter your guess: ");
+            }
             user.guess(user, computer);
 //            this.checkAnswer(user, computer);
             this.printResult(user);
