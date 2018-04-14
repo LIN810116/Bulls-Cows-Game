@@ -4,26 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User extends Players {
-    // Attribute
 
-    // Methods
     public User() {
         this.setName("You");
     }
+
     public void setCode(int[] target){
         String input;
         while (true) {
-            if (this.codeFromFile.size() > 0){ // auto
+            // auto
+            if (this.codeFromFile.size() > 0){
                 input = this.codeFromFile.removeFirst();
             }
-            else { // manu
+            // manu
+            else {
                 input = Keyboard.readInput();
-
             }
+            // check input
             if (this.checkInput(input)) {
                 break;
             }
         }
+        // set values
         for(int i = 0; i < LENGTH_OF_CODE; i++){
             target[i] = Integer.parseInt(input.charAt(i) + "");
         }

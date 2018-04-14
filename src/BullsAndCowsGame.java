@@ -59,6 +59,7 @@ public class BullsAndCowsGame {
 
         // play the game
         game.play(user, computer);
+//        System.out.println(computer.toStringForCode(computer.secretCode));
 
         //finish the game & save the results
         System.out.println("Do you wish to save the result?");

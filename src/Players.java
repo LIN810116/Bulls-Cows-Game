@@ -6,12 +6,12 @@ public abstract class Players {
     //ToDo Attributes
     private String name;
     static final int LENGTH_OF_CODE = 4;
-    //    protected List<Integer> secretCode = new ArrayList<Integer>();
+//    protected List<Integer> secretCode = new ArrayList<Integer>();
 //    protected List<Integer> guess = new ArrayList<Integer>();
     protected int[] secretCode = new int[LENGTH_OF_CODE];
     protected int[] guess = new int[LENGTH_OF_CODE];
     protected int bulls, cows;
-    protected int[] tempGuess = new int[LENGTH_OF_CODE];
+//    protected int[] tempGuess = new int[LENGTH_OF_CODE];
 //    List<String> codeFromFile = new ArrayList<>();
     Deque<String> codeFromFile = new ArrayDeque<>();
 
@@ -22,11 +22,14 @@ public abstract class Players {
                 throw new IndexOutOfBoundsException();
             }
             for (int i = 0; i < LENGTH_OF_CODE; i++) {
+                //check if it contains duplicate data
                 for (int j = 0; j < LENGTH_OF_CODE; j++) {
                     if (i != j && input.charAt(i) == input.charAt(j)) {
                         throw new DuplicateDataException();
                     }
                 }
+                //check if the string can be converted to integer
+                int numberForChecking = Integer.parseInt(input.charAt(i) + "");
             }
 
 //            for (int i = 0; i < LENGTH_OF_CODE; i++){
@@ -56,14 +59,11 @@ public abstract class Players {
     public abstract void guess(Players player, Players answer); //different roles have different implementations
 
     public void checkAnswer(int[] guess, int[] secretCode) {
-
         this.bulls = 0;
         this.cows = 0;
-
         // check bulls
         for (int i = 0; i < LENGTH_OF_CODE; i++) {
             if (guess[i] == secretCode[i]) {
-//                this.tempBulls++;
                 this.bulls++;
             }
         }
@@ -75,18 +75,6 @@ public abstract class Players {
                 }
             }
         }
-//        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
-//            //check the number of bulls
-//            if (player.guess.get(i) == answer.secretCode.get(i)){
-//                this.bulls++;
-//            }
-//            //check the number of cows
-//            else {
-//                if (answer.secretCode.contains(player.guess.get(i))){
-//                    this.cows++;
-//                }
-//            }
-//        }
     }
 
     //ToDo Setters & Getters
@@ -100,8 +88,7 @@ public abstract class Players {
     }
 
     // secretCode
-    public abstract void setSecretCode();
-    //will be implemented in user and computer classes >> different implementations
+    public abstract void setSecretCode(); //will be implemented in user and computer classes >> different implementations
 
     public int[] getSecretCode() {
         return this.secretCode;

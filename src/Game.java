@@ -18,10 +18,7 @@ public class Game {
     }
 
     public void play(User user, Computer computer) {
-        // for testing purpose : print out computer's secret code
-        System.out.println(computer.toStringForCode(computer.secretCode));
-
-        //todo
+//        System.out.println(computer.toStringForCode(computer.secretCode)); // for testing purpose
         for (int i = 1; i <= this.getNumberOfTurns(); i++){
             if (this.winner != null){
                 break;
@@ -33,51 +30,17 @@ public class Game {
                 System.out.println("Please enter your guess: ");
             }
             user.guess(user, computer);
-//            this.checkAnswer(user, computer);
             this.printResult(user);
             this.printWinner(user, i);
             //computer's turn
             if (this.winner == null) {
                 computer.guess(computer, user);
-//                this.checkAnswer(computer, user);
                 this.printResult(computer);
                 this.printWinner(computer, i);
             }
             outputData.add("------------------------------------------------------------------------");
         }
     }
-
-//    public void checkAnswer(Players player, Players answer){
-//        this.bulls = 0;
-//        this.cows = 0;
-//
-//        // check bulls
-//        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
-//            if (player.guess[i] == answer.secretCode[i]){
-//                this.bulls++;
-//            }
-//        }
-//        // check cows
-//        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
-//            for (int j = 0; j < answer.LENGTH_OF_CODE; j++){
-//                if (i != j && player.guess[i] == answer.secretCode[j]){
-//                    this.cows++;
-//                }
-//            }
-//        }
-////        for (int i = 0; i < player.LENGTH_OF_CODE; i++){
-////            //check the number of bulls
-////            if (player.guess.get(i) == answer.secretCode.get(i)){
-////                this.bulls++;
-////            }
-////            //check the number of cows
-////            else {
-////                if (answer.secretCode.contains(player.guess.get(i))){
-////                    this.cows++;
-////                }
-////            }
-////        }
-//    }
 
     public void printResult(Players player){
         String output = player.getName() + " guessed " + player.toStringForCode(player.guess) + ", scoring " + player.bulls + " bulls and " + player.cows + " cows.";
@@ -246,7 +209,6 @@ public class Game {
             }
             break;
         }
-
     }
 
 }
