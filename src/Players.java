@@ -77,31 +77,8 @@ public abstract class Players {
         }
     }
 
-    //ToDo Setters & Getters
-    // name
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    // secretCode
     public abstract void setSecretCode(); //will be implemented in user and computer classes >> different implementations
 
-    public int[] getSecretCode() {
-        return this.secretCode;
-    }
-
-    // guess
-    public void setGuess(List<Integer> input) {
-        this.guess = guess;
-    }
-
-    public int[] getGuess() {
-        return this.guess;
-    }
 
     public String toStringForCode(int[] code) {
         String s = "";
@@ -111,4 +88,11 @@ public abstract class Players {
         return s;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 }

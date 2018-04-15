@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HardLevel extends Computer {
-    List<int[]> possibleCodes = new ArrayList<int[]>();
+    private List<int[]> possibleCodes = new ArrayList<int[]>();
     int[] tempGuess = new int[LENGTH_OF_CODE];
 
     public HardLevel() {

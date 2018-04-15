@@ -3,7 +3,7 @@ import MyExceptions.DuplicateDataException;
 import java.util.*;
 
 public abstract class Computer extends Players {
-    String level;
+    private String level;
 
     public Computer() {
         this.setName("Computer");

@@ -19,7 +19,7 @@ public class Game {
 
     public void play(User user, Computer computer) {
 //        System.out.println(computer.toStringForCode(computer.secretCode)); // for testing purpose
-        for (int i = 1; i <= this.getNumberOfTurns(); i++){
+        for (int i = 1; i <= this.numberOfTurns; i++){
             if (this.winner != null){
                 break;
             }
@@ -49,20 +49,25 @@ public class Game {
     }
 
     public void printWinner(Players player, int count){
+        // user or computer wins
         if (player.bulls == player.LENGTH_OF_CODE){
+            outputData.add("------------------------------------------------------------------------");
             String output = "The winner is " + player.getName() + " :)";
             System.out.println(output);
             outputData.add(output);
             this.winner = player.getName();
             return;
         }
+        // it's a draw
         if (count == this.numberOfTurns && player.getName().equals("Computer")){
-            System.out.println("It's a draw.");
+            outputData.add("------------------------------------------------------------------------");
+            String output = "It's a draw.";
+            System.out.println(output);
+            outputData.add(output);
             return;
         }
     }
 
-    //Todo getters & setters
     public void setLevel() {
         String input;
         boolean isValid = false;
@@ -100,17 +105,6 @@ public class Game {
         return this.level;
     }
 
-    public int getNumberOfTurns() {
-        return this.numberOfTurns;
-    }
-
-    public void setWinner(String winner){
-        this.winner = winner;
-    }
-
-    public String getWinner(){
-        return this.winner;
-    }
 
     public void setMode(){
         String input;
