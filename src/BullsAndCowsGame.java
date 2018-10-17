@@ -1,7 +1,3 @@
-import MyExceptions.DuplicateDataException;
-
-import java.util.*;
-
 public class BullsAndCowsGame {
     public static void main(String[] args) {
         BullsAndCowsGame bullsAndCowsGame = new BullsAndCowsGame();

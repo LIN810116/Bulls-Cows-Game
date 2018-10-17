@@ -8,8 +8,8 @@ public class HardLevel extends Computer {
     int[] tempGuess = new int[LENGTH_OF_CODE];
 
     public HardLevel() {
-        // initiallise possibleCodes for 1st round (put all possible codes into possibleCodes)
-        String s = "";
+        // initialise possibleCodes for 1st round (put all possible codes into possibleCodes)
+        String s;
         for (int i = 123; i <= 9876; i++) {
             s = Integer.toString(i);
             if (s.length() == 3) {
@@ -58,7 +58,9 @@ public class HardLevel extends Computer {
         for (int i = 0; i < this.possibleCodes.size(); i++){
             this.checkAnswer(this.possibleCodes.get(i), player.guess); //assume player's guess as the secret code
             if (tempBulls != this.bulls || tempCows != this.cows){
-                tempPossibleCodes.add(this.possibleCodes.get(i));
+                tempPossibleCodes.add(this.possibleCodes.get(i)); //for later removing
+                // we can directly remove the incorrect guess instand of putting it into the tempPossibleCodes list
+                // this.possibleCodes.remove(tempPossibleCodes.get(i));
             }
         }
         // give the value back to bulls & cows

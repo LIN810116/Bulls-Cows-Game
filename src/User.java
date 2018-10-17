@@ -1,8 +1,3 @@
-import MyExceptions.DuplicateDataException;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class User extends Players {
 
     public User() {

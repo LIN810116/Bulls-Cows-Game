@@ -1,7 +1,3 @@
-import MyExceptions.DuplicateDataException;
-
-import java.util.*;
-
 public abstract class Computer extends Players {
     private String level;
 
@@ -21,14 +17,6 @@ public abstract class Computer extends Players {
             }
         }
         return randomNumbers;
-//        List<Integer> randomNumbers = new ArrayList<Integer>();
-//        while (randomNumbers.size() < 4){
-//            int number = (int)(Math.random() * 10);
-//            if (!randomNumbers.contains(number)){
-//                randomNumbers.add(number);
-//            }
-//        }
-//        return randomNumbers;
     }
 
     @Override

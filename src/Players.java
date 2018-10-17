@@ -3,19 +3,15 @@ import MyExceptions.DuplicateDataException;
 import java.util.*;
 
 public abstract class Players {
-    //ToDo Attributes
+    //Attributes
     private String name;
     static final int LENGTH_OF_CODE = 4;
-//    protected List<Integer> secretCode = new ArrayList<Integer>();
-//    protected List<Integer> guess = new ArrayList<Integer>();
     protected int[] secretCode = new int[LENGTH_OF_CODE];
     protected int[] guess = new int[LENGTH_OF_CODE];
     protected int bulls, cows;
-//    protected int[] tempGuess = new int[LENGTH_OF_CODE];
-//    List<String> codeFromFile = new ArrayList<>();
     Deque<String> codeFromFile = new ArrayDeque<>();
 
-    //Todo Methods
+    //Methods
     public boolean checkInput(String input) {
         try {
             if (input.length() > LENGTH_OF_CODE || input.length() < LENGTH_OF_CODE) {
@@ -29,16 +25,8 @@ public abstract class Players {
                     }
                 }
                 //check if the string can be converted to integer
-                int numberForChecking = Integer.parseInt(input.charAt(i) + "");
+                    int numberForChecking = Integer.parseInt(input.charAt(i) + "");
             }
-
-//            for (int i = 0; i < LENGTH_OF_CODE; i++){
-//                int value = Integer.parseInt(input.charAt(i) + "");
-//                if (target.contains(value)){ //must be 4 different digits
-//                    throw new DuplicateDataException();
-//                }
-//                target.add(value);
-//            }
 
         } catch (IndexOutOfBoundsException e) {
             System.out.println("The length of the input was invalid, try again:");
